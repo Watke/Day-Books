@@ -22,6 +22,6 @@ require(['newentrytest',
     // run one by one
 //    newentrytest.RunTests();
     datastoragetest.RunTests();
-//    catwalksdomtest.RunTests();
+    catwalksdomtest.RunTests();
     currententrytest.RunTests();
 });

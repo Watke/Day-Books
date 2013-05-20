@@ -10,48 +10,49 @@ define(['jquery',
     "use strict";
     return {
         RunTests : function () {
-            module('Catwalks DOM');
-            test('add another new lines of ingredients ', function () {
-                var i,
-                    aCatwalksDOM = new CatwalksDOM(),
+            module('Catwalks DOM: addNewEntry');
+            test('create the add-new-entry form', function () {
+                var aCatwalksDOM = new CatwalksDOM(),
+                    newEntryWrap = $('#newEntryWrap'),
                     // prototype chain would not continue
-                    currentIngredientNumber = $('.ingredients').length;
-                equal(new RegExp(currentIngredientNumber.toString()).test(CONSTANT_TEST.REG_EXR.INGREDIENT_NUMBER),
-                    true);
-                // do not use self increment, due to security reason
-                for (i = 0; i < CONSTANT_TEST.NEW_INGREDIENT.TEST_ROUNDS; i += 1) {
-                    aCatwalksDOM.addNewIngredient();
-                    currentIngredientNumber += 1;
-                    equal($('.ingredients').length, currentIngredientNumber);
-                }
-                equal($('.ingredients').length,
-                    CONSTANT_TEST.NEW_INGREDIENT.TEST_ROUNDS + 1); // including the original DOM
+                    newEntryWrapChildrenNumber = newEntryWrap.children().length;
+                equal(newEntryWrapChildrenNumber, 0);
+                aCatwalksDOM.addNewEntry();
+                // 1 section and 1 dive
+                equal(newEntryWrap.children().length, 2);
             });
 
-            test('remove ingredients ', function () {
-                var i,
-                    totalAddedIngredients,
-                    aCatwalksDOM = new CatwalksDOM(),
-                // prototype chain would not continue
-                    currentIngredientNumber = $('.ingredients').length;
-                // do not use self increment, due to security reason
-                for (i = 0; i < CONSTANT_TEST.NEW_INGREDIENT.TEST_ROUNDS; i += 1) {
-                    aCatwalksDOM.addNewIngredient();
-                    currentIngredientNumber += 1;
-                }
-                totalAddedIngredients = $('#ingredientWrap').children().length;
-                // only test added ingredients and does not include the original one
-                equal(totalAddedIngredients,
-                    CONSTANT_TEST.NEW_INGREDIENT.TEST_ROUNDS);
+            module('Catwalks DOM: showAccountSheet');
+            test('create the account sheet form', function () {
+                var aCatwalksDOM = new CatwalksDOM(),
+                    accountSheetWrap = $('#accountSheetWrap'),
+                    // prototype chain would not continue
+                    accountSheetWrapChildrenNumber = accountSheetWrap.children().length;
+                equal(accountSheetWrapChildrenNumber, 0);
+                aCatwalksDOM.showAccountSheet();
+                // 1 section and 1 dive
+                equal(accountSheetWrap.children().length, 2);
+            });
 
-                // remove ingredient Node from DOM
-                for (i = 0; i < CONSTANT_TEST.NEW_INGREDIENT.TEST_ROUNDS; i += 1) {
-                    totalAddedIngredients -= 1;
-                    // overwrite `this`, simulating when it is clicked by a user.
-                    aCatwalksDOM.removeIngredient.call($('.removeIngredient')[totalAddedIngredients]);
-                    equal($('#ingredientWrap').children().length, totalAddedIngredients);
-                }
-                equal($('#ingredientWrap').children().length, 0);
+            module('Catwalks DOM: updateFooterByParentId');
+            test('update footer of each table', function () {
+                var p,
+                    pText,
+                    footer,
+                    footerLength,
+                    aCatwalksDOM = new CatwalksDOM();
+                // add account sheet, because it has footer
+                aCatwalksDOM.showAccountSheet();
+                footer = $('#numberOfItems');
+                footerLength = footer.children().length;
+                equal(footerLength, 0);
+                // update footer
+                aCatwalksDOM.updateFooterByParentId('accountSheet');
+                // prototype chain would not continue, so not use `footerLength`
+                equal(footer.children().length, 1);
+                p = $('#numberOfItems p');
+                pText = p.text();
+                equal(pText.slice(0, 1), '4'); // because I hard coded
             });
         }
     };
