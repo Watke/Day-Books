@@ -27,7 +27,6 @@ a {
     font-weight:normal;
     padding:7px 24px;
     text-decoration:none;
-    text-shadow:1px 1px 0px #000000;
 }
 #newEntry:hover {
      background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #5cb811), color-stop(1, #77d42a) );
@@ -39,4 +38,12 @@ a {
 #newEntry:active {
       position:relative;
       top:1px;
+}
+
+#newEntry {
+    display: block;
+}
+
+#today,#dayBook {
+    display: inline;
 }

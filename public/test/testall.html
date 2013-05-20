@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TEST</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css">
+    <link rel="stylesheet" href="http://code.jquery.com/qunit/qunit-1.11.0.css" />
+</head>
+
+<body>
+<div id="qunit"></div>
+<div id="qunit-fixture">
+    <div>
+        <h1 id="dayBook">Day Books</h1>
+        <time datatime="<%= today %>" id="today"><%= today %>, <%= weekday %></time>
+    </div>
+    <button id="newEntry" type="button">New Entry</button>
+    <!--display current entries-->
+    <section id="currentEntryWrap"></section>
+    <!--display new entry form-->
+    <section id="newEntryWrap"></section>
+</div>
+<script src="http://code.jquery.com/qunit/qunit-1.11.0.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/require-jquery/0.25.0/require-jquery.min.js"></script>
+<script src="/javascripts/ejs.js"></script>
+<script src="/test/javascripts/testconfig.js"></script>
+</body>
+</html>
