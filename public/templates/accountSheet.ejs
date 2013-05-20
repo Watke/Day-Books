@@ -1,35 +1,44 @@
-<section id="accountSheet">
-    <table>
-        <caption>Chart of accounts</caption>
-        <thead>
-        <tr>
-            <th>No.</th>
-            <th>Name</th>
-            <th></th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td>1000</td>
-            <td>FIXED ASSETS</td>
-            <td>Heading</td>
-        </tr>
-        <tr>
-            <td>1010</td>
-            <td>Freehold property</td>
-            <td class="append">Balance sheet<span class="add-on"><i class="icon-table"></i></span></td>
-        </tr>
-        <tr>
-            <td>1011</td>
-            <td>Leasehold property</td>
-            <td class="append">Balance sheet<span class="add-on"><i class="icon-table"></i></span></td>
-        </tr>
-        <tr>
-            <td>1020</td>
-            <td>Plant and machinery</td>
-            <td class="append">Balance sheet<span class="add-on"><i class="icon-table"></i></span></td>
-        </tr>
-        </tbody>
-    </table>
-    <footer id='numberOfItems'><p></p></footer>
+<section id="accountSheetSection">
+    <a class="buttonClose"></a>
+    <section id="accountSheet" class="table">
+        <table>
+            <h3 id="accountSheetCaption">Chart of accounts</h3>
+            <thead>
+            <tr>
+                <th class="tableAccountNo">No.</th>
+                <th class="tableAccountName">Name</th>
+                <th class="tableAccountBalance"></th>
+                <th class="tableAccountIcon"></th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr class="entryRow">
+                    <td>1000</td>
+                    <td>FIXED ASSETS</td>
+                    <td>Heading</td>
+                    <td></td>
+                </tr>
+                <tr class="entryRow">
+                    <td>1010</td>
+                    <td>Freehold property</td>
+                    <td class="append">Balance sheet<span class="add-on"></span></td>
+                    <td><i class="icon-table"></i></td>
+                </tr>
+                <tr class="entryRow">
+                    <td>1011</td>
+                    <td>Leasehold property</td>
+                    <td class="append">Balance sheet<span class="add-on"></span></td>
+                    <td><i class="icon-table"></i></td>
+                </tr>
+                <tr class="entryRow">
+                    <td>1020</td>
+                    <td>Plant and machinery</td>
+                    <td class="append">Balance sheet<span class="add-on"></span></td>
+                    <td><i class="icon-table"></i></td>
+                </tr>
+            </tbody>
+        </table>
+        <footer id='numberOfItems'></footer>
+    </section>
 </section>
+<div id="accountSheetMask"></div>

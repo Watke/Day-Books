@@ -18,6 +18,29 @@ define(['jquery',
             return self;
         };
 
+        self.showAccountSheet = function () {
+            // private member
+            var accountSheet = new EJS({url : '/templates/accountSheet.ejs'}).render();
+            // account sheet
+            $('#accountSheetWrap').append(accountSheet);
+            return self;
+        };
+
+        self.updateFooterByParentId = function (id) {
+            var numberOfItem,
+                itemOrItems,
+                footer;
+            // how many items
+            numberOfItem = $('#' + id + ' table tbody').children().length;
+            itemOrItems = numberOfItem > 1 ? 'items' : 'item';
+            // account sheet's footer
+            footer = new EJS({url : '/templates/popUpFooter.ejs'}).render(
+                {number : numberOfItem, itemOrItems : itemOrItems}
+            );
+            $('#' + id).children('footer').append(footer);
+            return self;
+        };
+
         self.hideElementById = function (id) {
             var element = document.getElementById(id);
             element.setAttribute('style', 'display:none;');
@@ -34,6 +57,7 @@ define(['jquery',
             $('#newEntryWrap').children().remove();
             return self;
         };
+
     }
     return CatwalksDOM;
 });

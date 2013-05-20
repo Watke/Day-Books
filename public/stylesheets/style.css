@@ -52,27 +52,31 @@ a {
 
 /* New Entry Form */
 
-#newEntryWrap {
+#newEntryWrap,#accountSheetWrap {
     z-index: 1000;
 }
 
-#newEntryMask {
+#newEntryMask, #accountSheetMask {
     background-color: #666;
     filter: alpha(opacity=50);
     -ms-filter: "alpha(opacity=50)";
-    opacity: .5;
+    opacity: 0.5;
     z-index: -1;
 }
-#newEntryWrap, #newEntryMask {
+
+#newEntryWrap, #newEntryMask, #accountSheetWrap, #accountSheetMask  {
     position: absolute;
     top: 0;
     left: 0;
     height: 100%;
     width: 100%;
+}
+
+#newEntryWrap, #newEntryMask, #accountSheetMask{
     display: none;
 }
 
-#buttonClose {
+.buttonClose {
     position: absolute;
     right: -12px;
     top: -12px;
@@ -81,11 +85,11 @@ a {
     background: no-repeat url(http://dq0buzszpd7cj.cloudfront.net/btn-close-popup.png);
 }
 
-#buttonClose:hover {
+.buttonClose:hover {
     cursor: pointer;
 }
 
-#newEntryFormSection {
+#newEntryFormSection, #accountSheetSection {
     width: 800px;
     position: relative;
     margin-top: 200px;
@@ -100,11 +104,11 @@ a {
     -webkit-border-radius:5px;
     border-radius:5px;
     border : 0px;
-    font-family: 'Lato', sans-serif; /*DELIVERED FROM GOOGLE COULD*/
-    font-size:10px;
+    /*font-family: 'Lato', sans-serif; *//*DELIVERED FROM GOOGLE COULD*/
+    /*font-size:10px;*/
 }
 
-#newEntryForm, #dayBookCaption {
+#newEntryForm, #dayBookCaption, #accountSheetCaption {
     margin: 20px;
 }
 
@@ -174,6 +178,45 @@ select {
     width: 155px;
 }
 
+/* account sheet */
+#accountSheetSection {
+    width: 663px;
+}
+#accountSheetWrap {
+    display: none;
+}
+#accountSheet {
+    padding-bottom: 20px;
+}
+#accountSheet table, #accountSheet footer {
+    margin: 20px;
+}
+
+.tableAccountName{
+    width: 400px;
+}
+.tableAccountNo{
+    width: 50px;
+}
+
+.tableAccountBalance {
+    width: 100px;
+}
+
+#numberOfItems p {
+    float: right;
+}
+
+#accountSheet tr:hover {
+    background-color: rgba(222, 222, 222, 0.45);
+    opacity: 0.5;
+    cursor: default;
+}
+
+td .icon-table {
+    cursor: pointer;
+}
+
 /* smaller screen */
 @media (max-width: 767px) and (max-width:979px) {
     body {
@@ -213,5 +256,9 @@ select {
     }
     #text {
         width : 100%;
+    }
+    /* account sheet */
+    #accountSheetSection {
+        width: 630px;
     }
 }

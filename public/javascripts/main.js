@@ -31,6 +31,7 @@ require(["jquery", "currentEntry", "dataStorage", "newEntry", "constant", "catwa
                 for (i = 0; i < data.length; i += 1) {
                     aCurrentEntry.showCurrentEntry(data[i]);
                 }
+                aCatwalksDOM.updateFooterByParentId('currentEntry');
 
             }); // setup mock up data
         // click event
@@ -39,6 +40,14 @@ require(["jquery", "currentEntry", "dataStorage", "newEntry", "constant", "catwa
                 .addNewEntry()
                 .showElementById('newEntryWrap')
                 .showElementById('newEntryMask');
+        });
+        $(document).on('click', '.selectAccount', function () {
+            aCatwalksDOM
+                .showAccountSheet()
+                .updateFooterByParentId('accountSheet')
+                .showElementById('accountSheetWrap')
+                .hideElementById('newEntryWrap')
+                .showElementById('accountSheetMask');
         });
         $(document).on('click', '.closeDayBook', function () {
             aCatwalksDOM
