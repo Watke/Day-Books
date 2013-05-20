@@ -113,6 +113,9 @@ a {
 }
 
 /* current entry*/
+#currentEntryWrap {
+    width: 1013px;
+}
 thead {
     background-color: #0a67ba;
     color : #ffffff;
@@ -136,7 +139,7 @@ thead {
     background: #dceaf4;
 }
 
-#text {
+#text, .currentEntryText {
     width: 272px;
 }
 
@@ -188,6 +191,7 @@ select {
 #accountSheet {
     padding-bottom: 20px;
 }
+
 #accountSheet table, #accountSheet footer {
     margin: 20px;
 }
@@ -229,6 +233,9 @@ td .icon-table {
     }
     .remove {
         margin-right: 0px;
+    }
+    #currentEntryWrap {
+        width: 100%;
     }
     /* new entry form*/
     #newEntryFormSection {
