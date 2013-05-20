@@ -30,20 +30,6 @@ define(['../../javascripts/dataStorage.js',
                 }
 
             });
-            test('Store data in session storage', function () {
-                var aDataStorage = new DataStorage(),
-                    aSessionStorage = new aDataStorage.SessionStorage(),
-                    newEntry = {};
-
-                newEntry.brand = CONSTANT_TEST.NEW_ENTRY.TEST.BRAND;
-                newEntry.productName = CONSTANT_TEST.NEW_ENTRY.TEST.PRODUCT_NAME;
-                newEntry.ingredient = CONSTANT_TEST.NEW_ENTRY.TEST.INGREDIENT;
-                newEntry.key = 'testbrand1';
-
-                aSessionStorage.init().saveData(newEntry);
-                deepEqual(aSessionStorage.readData(newEntry.key), newEntry);
-
-            });
         }
     };
 });
