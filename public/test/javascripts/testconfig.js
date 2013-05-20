@@ -7,18 +7,21 @@ require.config({
     paths: {
         'newentrytest' : '/test/javascripts/newentrytest',
         'datastoragetest' : '/test/javascripts/datastoragetest',
-        'catwalksdomtest' : '/test/javascripts/catwalksdomtest'
+        'catwalksdomtest' : '/test/javascripts/catwalksdomtest',
+        'currententrytest' : '/test/javascripts/currententrytest'
     }
 });
 /*global QUnit*/
 QUnit.config.autostart = false;
 require(['newentrytest',
     'datastoragetest',
-    'catwalksdomtest'], function (newentrytest, datastoragetest, catwalksdomtest) {
+    'catwalksdomtest',
+    'currententrytest'], function (newentrytest, datastoragetest, catwalksdomtest, currententrytest) {
     "use strict";
     QUnit.start();
     // run one by one
 //    newentrytest.RunTests();
     datastoragetest.RunTests();
 //    catwalksdomtest.RunTests();
+    currententrytest.RunTests();
 });
