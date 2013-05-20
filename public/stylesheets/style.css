@@ -121,6 +121,9 @@ thead {
     color : #ffffff;
     /* table does not have margin and border radius */
 }
+.currentEntryHead {
+    width: 50px;
+}
 
 .entryRow:nth-child(odd) {
     background-color: #cde4ff;
