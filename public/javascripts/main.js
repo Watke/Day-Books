@@ -33,6 +33,12 @@ require(["jquery", "currentEntry", "dataStorage", "newEntry", "constant", "catwa
                 }
 
             }); // setup mock up data
-
+        // click event
+        $(document).on('click', '#newEntry', function () {
+            aCatwalksDOM
+                .addNewEntry()
+                .showElementById('newEntryWrap')
+                .showElementById('newEntryMask');
+        });
 
     });

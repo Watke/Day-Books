@@ -1,0 +1,92 @@
+<section id="newEntryFormSection">
+    <h3 id="dayBookCaption">Day Book</h3>
+    <a id="buttonClose"></a>
+    <form id="newEntryForm" class="container-fluid" action="">
+        <div id="formBackground" class="row-fluid">
+            <div class="leftContainer span3">
+                <div class="item">
+                    <label for="type">Type</label>
+                    <select id="type"
+                            data-placeholder="Entry Type"
+                            autofocus>
+                        <option value=""></option>
+                        <option value="journal">Journal Entry</option>
+                        <option value="transport">Transportation</option>
+                        <option value="meal">Meal</option>
+                        <section id="additionalOptionWrap"></section>
+                    </select>
+                </div>
+                <div class="item">
+                    <label for="entry">Entry</label>
+                    <input type="number" name="entry" id="entry" placeholder="type in number" min="1" step="1">
+                </div>
+                <div class=item>
+                    <label for="entryDate">Date</label>
+                    <input type="date" name="date" id="entryDate" placeholder="select a date">
+                </div>
+            </div>
+
+            <div class="middleContainer span3">
+                <div class="item">
+                    <div class='input-append'>
+                        <label for="accountNo">Account no.</label>
+                        <input type="text" name="accountNo" id="accountNo" placeholder="type or select">
+                        <button type="button" class="btn"><i class="icon-reorder"></i></button>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class='input-append'>
+                        <label for="contraAccount">Contra Account</label>
+                        <input type="text" name="contraAccount" id="contraAccount" placeholder="type or select">
+                        <button type="button" class="btn"><i class="icon-reorder"></i></button>
+                    </div>
+                </div>
+                <div class="item">
+                    <label for="accountName">Account name</label>
+                    <input type="text" name="accountName" id="accountName" readonly>
+                </div>
+                <div class="item">
+                    <label for="contraAccountName">Contra account name</label>
+                    <input type="text" name="accountName" id="contraAccountName" readonly>
+                </div>
+            </div>
+
+            <div class="rightContainer span4">
+                <div class="row-fluid">
+                    <div class="item span2">
+                        <label for="cardType">D/C</label>
+                        <select id="cardType"
+                                data-placeholder="Card Type">
+                            <option value=""></option>
+                            <option value="debit">Debit</option>
+                            <option value="credit">Credit</option>
+                        </select>
+                    </div>
+                    <div class="item span2 offset6">
+                        <label for="amount">Amont</label>
+                        <input type="number" name="amount" id="amount">
+                    </div>
+                </div>
+
+                <div class="item">
+                    <label for="text">Text</label>
+                    <input type="text" name="text" id="text">
+                </div>
+                <div class="item">
+                    <label for="currency">Currency</label>
+                    <select id="currency"
+                            data-placeholder="Currency"
+                            >
+                        <option value=""></option>
+                        <section id="currencyList"></section>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <section id="submitWrap" class="row-fluid">
+            <input id="buttonCancel" type="button" class="span2" value="Cancel">
+            <input id="save" type="submit" class="span2" value="Save">
+        </section>
+    </form>
+</section>
+<div id="newEntryMask"></div>
