@@ -33,6 +33,18 @@ define(function () {
                     CONTRA_ACCOUNT : '1200',
                     VAT_2 : '',
                     CURRENCY : 'USD'
+                },
+                {
+                    DATE : '17.12.12',
+                    ENTRY : '50167',
+                    INVOICE : '',
+                    TEXT : 'test & Co. test',
+                    AMOUNT : '-90.00',
+                    ACCOUNT : '102',
+                    VAT_1 : '',
+                    CONTRA_ACCOUNT : '1200',
+                    VAT_2 : '',
+                    CURRENCY : 'USD'
                 }
             ]
         },

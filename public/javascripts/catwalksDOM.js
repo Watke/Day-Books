@@ -29,6 +29,11 @@ define(['jquery',
             element.setAttribute('style', 'display:block;');
             return self;
         };
+
+        self.closeDayBook = function () {
+            $('#newEntryWrap').children().remove();
+            return self;
+        };
     }
     return CatwalksDOM;
 });

@@ -30,14 +30,14 @@ a {
     margin-bottom: 10px;
     text-decoration:none;
 }
-#newEntry:hover {
+#newEntry:hover,#save:hover {
      background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #5cb811), color-stop(1, #77d42a) );
      background:-moz-linear-gradient( center top, #5cb811 5%, #77d42a 100% );
     background: linear-gradient(to bottom, #5cb811 5%, #77d42a 100%); /*opera*/
      filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#5cb811', endColorstr='#77d42a');
      background-color:#5cb811;
 }
-#newEntry:active {
+#newEntry:active,#buttonCancel:active,#save:active {
       position:relative;
       top:1px;
 }
@@ -81,6 +81,10 @@ a {
     background: no-repeat url(http://dq0buzszpd7cj.cloudfront.net/btn-close-popup.png);
 }
 
+#buttonClose:hover {
+    cursor: pointer;
+}
+
 #newEntryFormSection {
     width: 800px;
     position: relative;
@@ -101,11 +105,28 @@ a {
 }
 
 #newEntryForm, #dayBookCaption {
-    margin-left: 20px;
-    margin-right: 20px;
+    margin: 20px;
 }
-/* new entry form */
 
+/* current entry*/
+thead {
+    background-color: #0a67ba;
+    color : #ffffff;
+}
+
+.entryRow {
+    margin-top: 5px;
+}
+
+.entryRow:nth-child(odd) {
+    background-color: #cde4ff;
+}
+
+.remove {
+    margin-right: 10px;
+}
+
+/* new entry form */
 #formBackground {
     padding: 10px;
     -moz-border-radius:5px;
@@ -127,9 +148,18 @@ a {
     background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #cde4ff), color-stop(1, #b2c6e0) );
     background:-moz-linear-gradient( center top, #cde4ff 5%, #b2c6e0 100% );
     background: linear-gradient(to bottom, #cde4ff 5%, #b2c6e0 100%); /*opera*/
-    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#77d42a', endColorstr='#5cb811');
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#cde4ff', endColorstr='#b2c6e0');
     background-color: #cde4ff;
 }
+
+#buttonCancel:hover{
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #b2c6e0), color-stop(1, #cde4ff) );
+    background:-moz-linear-gradient( center top, #b2c6e0 5%, #cde4ff 100% );
+    background: linear-gradient(to bottom, #b2c6e0 5%, #cde4ff 100%); /*opera*/
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#77d42a', endColorstr='#5cb811');
+    background-color: #b2c6e0;
+}
+
 #save {
     float: right;
 }

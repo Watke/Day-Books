@@ -40,5 +40,9 @@ require(["jquery", "currentEntry", "dataStorage", "newEntry", "constant", "catwa
                 .showElementById('newEntryWrap')
                 .showElementById('newEntryMask');
         });
-
+        $(document).on('click', '.closeDayBook', function () {
+            aCatwalksDOM
+                .closeDayBook()
+                .hideElementById('newEntryWrap');
+        });
     });
