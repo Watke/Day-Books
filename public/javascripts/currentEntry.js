@@ -24,6 +24,14 @@ define(["jquery",
             $('#entryRowWrap').append(entryRow);
             return self;
         };
+
+        self.getEntryByKey = function (key, successCB, errorCB) {
+            var entry = {},
+                aDataStorage = new DataStorage(),
+                aSessionStorage = new aDataStorage.SessionStorage();
+            // Even thought, this is synchronous function, for simplicity
+            aSessionStorage.readData(key, successCB, errorCB);
+        };
     }
     return CurrentEntry;
 });

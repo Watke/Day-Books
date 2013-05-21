@@ -123,7 +123,7 @@ define(["jquery", "../javascripts/constant.js"], function ($, CONSTANT) {
                     }
                     var data = sessionStorage.getItem(key);
                     if (successCB && typeof successCB === 'function') {
-                        successCB(data);
+                        successCB(JSON.parse(data));
                     } else {
                         return JSON.parse(data);
                     }

@@ -56,8 +56,15 @@ require(["jquery", "currentEntry", "dataStorage", "newEntry", "constant", "catwa
                 .hideElementById('newEntryWrap');
         });
         $(document).on('click', '#save', function (e) {
-            var aNewEntry = new NewEntry();
-            aNewEntry.getInputData().saveData(e);
+            // when read succeed
+            function successCB_2(data) {
+                aCurrentEntry.showCurrentEntry(data);
+            }
+            // when save succeed
+            function successCB_1(data) {
+                aCurrentEntry.getEntryByKey(data.key, successCB_2);
+            }
+            aNewEntry.getInputData().saveData(e, successCB_1);
         });
         $(document).on('keydown', 'input', function (e) {
             aCatwalksDOM.preventFormDefault(e);
