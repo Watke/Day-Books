@@ -45,11 +45,19 @@ define(['jquery',
          * show the account sheet that allows a user to choose
          * @returns {this} the object that invoked the function
          */
-        self.showAccountSheet = function () {
+        self.showAccountSheet = function (element) {
             // private member
-            var accountSheet = new EJS({url : '/templates/accountSheet.ejs'}).render();
+            var accountSheet = new EJS({url : '/templates/accountSheet.ejs'}).render(
+                    {
+                        destination : $(element.parentNode).find('label').attr('for') === 'accountNo' ?
+                                'accountNo' : 'contraAccount'
+                    }
+                ),
+                normalAccount = $(element.parentNode).find('#accountNo'),
+                contraAccount = $(element.parentNode).find('#contraAccount');
             // account sheet
             $('#accountSheetWrap').append(accountSheet);
+
             return self;
         };
         /**
@@ -71,11 +79,37 @@ define(['jquery',
             $('#' + id).children('footer').append(footer);
             return self;
         };
+        /**
+         * prevent the add-new-entry form submitted
+         * by pressing `enter` key
+         * @param event
+         * @returns {boolean}
+         */
         self.preventFormDefault = function (event) {
             if (event.keyCode === 13) {
                 event.preventDefault();
                 return false;
             }
+        };
+        self.selectAccount = function (event, row) {
+            event.preventDefault();
+            var normalAccountNo = $('#accountNo'),
+                contraAccountNo = $('#contraAccount'),
+                accountName = $('#accountName'),
+                contraAccountName = $('#contraAccountName'),
+                rowItems = $(row).children(),
+            // compare with `label` tag `for` attribute in middleContainer
+                dataTag = $('#accountSheet').attr('data-tag');
+            if (normalAccountNo && dataTag === 'accountNo') {
+                // set up account no. and name in the add-new-entry form
+                normalAccountNo.val(rowItems.first().html());
+                accountName.val(rowItems.first().next().html());
+            } else {
+                // set up contra account no. and name in the add-new-entry form
+                contraAccountNo.val(rowItems.first().html());
+                contraAccountName.val(rowItems.first().next().html());
+            }
+            return self;
         };
         self.hideElementById = function (id) {
             var element = document.getElementById(id);
@@ -86,6 +120,15 @@ define(['jquery',
         self.showElementById = function (id) {
             var element = document.getElementById(id);
             element.setAttribute('style', 'display:block;');
+            return self;
+        };
+
+        self.removeElementById = function (id) {
+            var element = document.getElementById(id),
+                parentNode = element.parentNode,
+                oldChild;
+            //  holds a reference to the removed child node. oldChild === child
+            oldChild = parentNode.removeChild(element);
             return self;
         };
 

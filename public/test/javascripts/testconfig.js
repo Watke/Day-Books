@@ -20,7 +20,7 @@ require(['newentrytest',
     "use strict";
     QUnit.start();
     // run one by one
-//    newentrytest.RunTests();
+    newentrytest.RunTests();
     datastoragetest.RunTests();
     catwalksdomtest.RunTests();
     currententrytest.RunTests();

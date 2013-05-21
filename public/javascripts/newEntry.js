@@ -58,6 +58,7 @@ define(["jquery",
                 data.key = data.ENTRY;
             } else {
                 data.key = aSerialMaker.generateSerialNumber();
+                data.ENTRY = data.key;
             }
             return {
                 data : data,

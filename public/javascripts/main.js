@@ -33,7 +33,7 @@ require(["jquery", "currentEntry", "dataStorage", "newEntry", "constant", "catwa
                 }
                 aCatwalksDOM.updateFooterByParentId('currentEntry');
             }); // setup mock up data
-        // click event
+        // click new Entry
         $(document).on('click', '#newEntry', function () {
             aCatwalksDOM
                 .addNewEntry()
@@ -42,23 +42,31 @@ require(["jquery", "currentEntry", "dataStorage", "newEntry", "constant", "catwa
                 .initSelectBox()
                 .initCurrencyList();
         });
+        // select account from sheet
         $(document).on('click', '.selectAccount', function () {
             aCatwalksDOM
-                .showAccountSheet()
+                .showAccountSheet(this)
                 .updateFooterByParentId('accountSheet')
                 .showElementById('accountSheetWrap')
                 .hideElementById('newEntryWrap')
+                .hideElementById('newEntryMask')
                 .showElementById('accountSheetMask');
         });
+        // close day-book: the new entry form
         $(document).on('click', '.closeDayBook', function () {
             aCatwalksDOM
                 .closeDayBook()
                 .hideElementById('newEntryWrap');
         });
+        // click save button
         $(document).on('click', '#save', function (e) {
             // when read succeed
             function successCB_2(data) {
                 aCurrentEntry.showCurrentEntry(data);
+                aCatwalksDOM.removeElementById('numberOfItemsText')
+                    .updateFooterByParentId('currentEntry')
+                    .closeDayBook()
+                    .hideElementById('newEntryWrap');
             }
             // when save succeed
             function successCB_1(data) {
@@ -66,7 +74,18 @@ require(["jquery", "currentEntry", "dataStorage", "newEntry", "constant", "catwa
             }
             aNewEntry.getInputData().saveData(e, successCB_1);
         });
+        // `entry` key event: prevent form submitted unauthorised
         $(document).on('keydown', 'input', function (e) {
             aCatwalksDOM.preventFormDefault(e);
+        });
+        // select an account from sheet
+        $(document).on('click', '#accountSheet table tbody tr', function (e) {
+            aCatwalksDOM
+                .selectAccount(e, this)
+                .removeElementById('accountSheetSection')
+                .showElementById('newEntryWrap')
+                .showElementById('newEntryMask')
+                .removeElementById('accountSheetMask')
+                .hideElementById('accountSheetWrap');
         });
     });
