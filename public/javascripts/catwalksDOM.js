@@ -5,19 +5,46 @@
  */
 /*global define, EJS*/
 define(['jquery',
-    '../javascripts/constant.js'], function ($, CONSTANT) {
+    '../javascripts/constant.js',
+    '../javascripts/selectBox.js',
+    '../javascripts/currencyList.js'], function ($, CONSTANT, SelectBox, CurrencyList) {
     "use strict";
     function CatwalksDOM() {
         // private members
         var self = this; // NOTE: Capital constructor enable `validthis`
-
+        /**
+         * initialise select box function
+         * @returns {this} the object that invoked the function
+         */
+        self.initSelectBox = function () {
+            var aSelectBox = new SelectBox();
+            aSelectBox.init();
+            return self;
+        };
+        /**
+         * initialise currencies list
+         * @returns {this} the object that invoked the function
+         */
+        self.initCurrencyList = function () {
+            // private member
+            var aCurrencyList = new CurrencyList();
+            aCurrencyList.init();
+            return self;
+        };
+        /**
+         * create the Day Book form for adding new entry
+         * @returns {this} the object that invoked the function
+         */
         self.addNewEntry = function () {
             // private member
             var newEntry = new EJS({url : '/templates/newEntry.ejs'}).render();
             $('#newEntryWrap').append(newEntry);
             return self;
         };
-
+        /**
+         * show the account sheet that allows a user to choose
+         * @returns {this} the object that invoked the function
+         */
         self.showAccountSheet = function () {
             // private member
             var accountSheet = new EJS({url : '/templates/accountSheet.ejs'}).render();
@@ -25,7 +52,11 @@ define(['jquery',
             $('#accountSheetWrap').append(accountSheet);
             return self;
         };
-
+        /**
+         * update footer elements under tables
+         * @param id
+         * @returns {this} the object that invoked the function
+         */
         self.updateFooterByParentId = function (id) {
             var numberOfItem,
                 itemOrItems,
@@ -40,7 +71,12 @@ define(['jquery',
             $('#' + id).children('footer').append(footer);
             return self;
         };
-
+        self.preventFormDefault = function (event) {
+            if (event.keyCode === 13) {
+                event.preventDefault();
+                return false;
+            }
+        };
         self.hideElementById = function (id) {
             var element = document.getElementById(id);
             element.setAttribute('style', 'display:none;');

@@ -12,6 +12,29 @@ define(["jquery",
         // private members
         var self = this;
 
+        self.getInputData = function () {
+            var data = {};
+            data.type = $('#type').val();
+            data.entry = $('#entry').val();
+            return {
+                data : data,
+                saveData : self.saveData
+            };
+        };
+
+        self.saveData = function (event) {
+            var i;
+            event.preventDefault();
+            // this.data to get date
+            if (arguments.length > 1) {
+                for (i = 1; i < arguments.length; i += 1) {
+                    if (arguments[i] && typeof arguments[i] === 'function') {
+                        arguments[i]();
+                    }
+                }
+            }
+            return false;
+        };
     }
     return NewEntry;
 });

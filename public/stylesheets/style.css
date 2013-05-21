@@ -267,6 +267,13 @@ td .icon-table {
     #text {
         width : 100%;
     }
+    /* search box */
+    .bfh-selectbox-options,.bfh-selectbox-options ul {
+        width: 160px;
+    }
+    li a {
+        width: 120px;
+    }
     /* account sheet */
     #accountSheetSection {
         width: 630px;

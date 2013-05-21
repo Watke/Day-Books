@@ -32,14 +32,15 @@ require(["jquery", "currentEntry", "dataStorage", "newEntry", "constant", "catwa
                     aCurrentEntry.showCurrentEntry(data[i]);
                 }
                 aCatwalksDOM.updateFooterByParentId('currentEntry');
-
             }); // setup mock up data
         // click event
         $(document).on('click', '#newEntry', function () {
             aCatwalksDOM
                 .addNewEntry()
                 .showElementById('newEntryWrap')
-                .showElementById('newEntryMask');
+                .showElementById('newEntryMask')
+                .initSelectBox()
+                .initCurrencyList();
         });
         $(document).on('click', '.selectAccount', function () {
             aCatwalksDOM
@@ -53,5 +54,12 @@ require(["jquery", "currentEntry", "dataStorage", "newEntry", "constant", "catwa
             aCatwalksDOM
                 .closeDayBook()
                 .hideElementById('newEntryWrap');
+        });
+        $(document).on('click', '#save', function (e) {
+            var aNewEntry = new NewEntry();
+            aNewEntry.getInputData().saveData(e);
+        });
+        $(document).on('keydown', 'input', function (e) {
+            aCatwalksDOM.preventFormDefault(e);
         });
     });
