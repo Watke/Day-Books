@@ -26,7 +26,7 @@ define(["jquery",
                     //private variables
                     var newDate = new Date(oldDate),
                         day = newDate.getDate(),
-                        month = newDate.getMonth(),
+                        month = parseInt(newDate.getMonth()) + 1,
                         year = newDate.getFullYear().toString().slice(2);
                     return day + '.' + month + '.' + year;
                 }

@@ -7,7 +7,8 @@
 define(['jquery',
     '../javascripts/constant.js',
     '../javascripts/selectBox.js',
-    '../javascripts/currencyList.js'], function ($, CONSTANT, SelectBox, CurrencyList) {
+    '../javascripts/currencyList.js',
+    '../javascripts/datePicker.js'], function ($, CONSTANT, SelectBox, CurrencyList, DatePicker) {
     "use strict";
     function CatwalksDOM() {
         // private members
@@ -32,6 +33,17 @@ define(['jquery',
             return self;
         };
         /**
+         * initialise date picker,
+         * because Safari 6 and Firefox 23 does not support input[type=date]
+         * @returns {this} the object that invoked the function
+         */
+        self.initDatePicker = function () {
+            var aDatePicker = new DatePicker();
+            aDatePicker.init();
+            $('.datepicker').datepicker();
+            return self;
+        };
+        /**
          * create the Day Book form for adding new entry
          * @returns {this} the object that invoked the function
          */
@@ -52,9 +64,7 @@ define(['jquery',
                         destination : $(element.parentNode).find('label').attr('for') === 'accountNo' ?
                                 'accountNo' : 'contraAccount'
                     }
-                ),
-                normalAccount = $(element.parentNode).find('#accountNo'),
-                contraAccount = $(element.parentNode).find('#contraAccount');
+                );
             // account sheet
             $('#accountSheetWrap').append(accountSheet);
 

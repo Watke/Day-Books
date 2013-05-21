@@ -37,10 +37,11 @@ require(["jquery", "currentEntry", "dataStorage", "newEntry", "constant", "catwa
         $(document).on('click', '#newEntry', function () {
             aCatwalksDOM
                 .addNewEntry()
-                .showElementById('newEntryWrap')
-                .showElementById('newEntryMask')
                 .initSelectBox()
-                .initCurrencyList();
+                .initCurrencyList()
+                .initDatePicker()
+                .showElementById('newEntryWrap')
+                .showElementById('newEntryMask');
         });
         // select account from sheet
         $(document).on('click', '.selectAccount', function () {

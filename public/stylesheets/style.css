@@ -119,7 +119,7 @@ a {
 thead {
     background-color: #0a67ba;
     color : #ffffff;
-    /* table does not have margin and border radius */
+    /* table does not have margin and tr does not have border radius */
 }
 .currentEntryHead {
     width: 50px;
@@ -169,6 +169,11 @@ thead {
 
 #save {
     float: right;
+}
+/* date picker */
+.datepicker-days table thead {
+    background-color : #ffffff;
+    color: #000000;
 }
 
 /* form input box length */
