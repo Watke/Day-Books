@@ -48,7 +48,7 @@ define(["jquery", "../javascripts/constant.js"], function ($, CONSTANT) {
              * init session storage
              * @param successCB () synchronous callback
              * @param errorCB (error) synchronous callback
-             * @returns {Object} this
+             * @returns {Object} the object that invoked the function
              */
             _self.init = function (successCB, errorCB) {
                 if (typeof Storage) {
@@ -66,7 +66,12 @@ define(["jquery", "../javascripts/constant.js"], function ($, CONSTANT) {
                 }
 
             };
-
+            /**
+             * clear session storage
+             * @param successCB
+             * @param errorCB
+             * @returns {this}
+             */
             _self.clearData = function (successCB, errorCB) {
                 try {
                     sessionStorage.clear();
@@ -135,7 +140,12 @@ define(["jquery", "../javascripts/constant.js"], function ($, CONSTANT) {
                     }
                 }
             };
-
+            /**
+             * put mock up data into session storage
+             * mock up data is placed in constant.js
+             * @param successCB ({Object})
+             * @param errorCB ({String})
+             */
             _self.initMockUpData = function (successCB, errorCB) {
                 function successCB_1() {
                     try {
@@ -146,7 +156,7 @@ define(["jquery", "../javascripts/constant.js"], function ($, CONSTANT) {
                         }
                     } catch (err) {
                         if (errorCB && typeof errorCB === 'function') {
-                            errorCB();
+                            errorCB(err);
                         } else {
                             throw err;
                         }

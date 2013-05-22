@@ -17,7 +17,10 @@ define(["jquery",
 
         // generate serial number, this is not a good part
         aSerialMaker.setSequence(1000);
-
+        /**
+         * get user input data from add-new-entry form
+         * @returns {{data: {Object}, saveData: Function}}
+         */
         self.getInputData = function () {
             // prevent hoisting confusion
             var data = {};
@@ -50,7 +53,11 @@ define(["jquery",
                 saveData : self.saveData
             };
         };
-
+        /**
+         * save data into session storage
+         * @param event DOM event
+         * @returns {boolean} return false, prevent DOM default action
+         */
         self.saveData = function (event) {
             var i,
                 aSessionStorage = new aDataStorage.SessionStorage();
