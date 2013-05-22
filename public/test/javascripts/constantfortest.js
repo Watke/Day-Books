@@ -21,6 +21,8 @@ define(function () {
                 cardType : 'Debit',
                 AMOUNT : '444.90',
                 TEXT : 'Test text HHJJK @#$%$#&$^%*&^%123',
+                TEXT_SANITISED : 'Test text HHJJK @#$%$#&amp;$^%*&amp;^%123',
+
                 CURRENCY : 'CNY',
                 // add other data which is not from the form
                 INVOICE : '',

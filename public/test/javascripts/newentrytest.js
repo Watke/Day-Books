@@ -94,7 +94,7 @@ define(['jquery', '../../javascripts/newEntry.js',
 
                 equal(cardType.val(), data.cardType);
                 equal(amount.val(), data.AMOUNT);
-                equal(text.val(), data.TEXT);
+                equal(data.TEXT, CONSTANT_TEST.NEW_ENTRY.TEST.TEXT_SANITISED);
                 equal(currency.val(), data.CURRENCY);
             });
         }

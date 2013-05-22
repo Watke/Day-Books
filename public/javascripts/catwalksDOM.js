@@ -56,7 +56,7 @@ define(['jquery',
                 var today = new Date(),
                     day = today.getDate(),
                     month = today.getMonth() + 1,
-                    year = today.getFullYear().toString().slice(2);;
+                    year = today.getFullYear().toString().slice(2);
                 return day + '.' + month + '.' + year;
             }
             newEntry = new EJS({url : '/templates/newEntry.ejs'}).render({today : getToday()});

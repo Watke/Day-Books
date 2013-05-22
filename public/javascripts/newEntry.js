@@ -24,19 +24,22 @@ define(["jquery",
         self.getInputData = function () {
             // prevent hoisting confusion
             var data = {};
-            data.type = $('#type').val();
-            data.ENTRY = $('#entry').val();
-            data.DATE = $('#entryDate').val();
+            function basicSanitise(input) {
+                return input.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
+            }
+            data.type = basicSanitise($('#type').val());
+            data.ENTRY = basicSanitise($('#entry').val());
+            data.DATE = basicSanitise($('#entryDate').val());
 
-            data.ACCOUNT = $('#accountNo').val();
-            data.CONTRA_ACCOUNT = $('#contraAccount').val();
-            data.accountName = $('#accountName').val();
-            data.contraAccountName = $('#contraAccountName').val();
+            data.ACCOUNT = basicSanitise($('#accountNo').val());
+            data.CONTRA_ACCOUNT = basicSanitise($('#contraAccount').val());
+            data.accountName = basicSanitise($('#accountName').val());
+            data.contraAccountName = basicSanitise($('#contraAccountName').val());
 
-            data.cardType = $('#cardType').val();
-            data.AMOUNT = $('#amount').val();
-            data.TEXT = $('#text').val();
-            data.CURRENCY = $('#currency').val();
+            data.cardType = basicSanitise($('#cardType').val());
+            data.AMOUNT = basicSanitise($('#amount').val());
+            data.TEXT = basicSanitise($('#text').val());
+            data.CURRENCY = basicSanitise($('#currency').val());
             // add other data which is not from the form
             data.INVOICE = '';
             data.VAT_1 = '';
@@ -73,6 +76,7 @@ define(["jquery",
             }
             return false;
         };
+
     }
     return NewEntry;
 });
