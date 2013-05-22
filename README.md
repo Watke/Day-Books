@@ -3,7 +3,7 @@ Day-Books
 
 ## What is it?
 This is a day book application that can keep your financial entries. It is an HTML5 application, 
-and currently it can run on Chrome 27, Firefox 21, Opera 12. Why not IE? ___Hire me___ and 
+and currently it can run on Chrome 27, Firefox 21, Opera 12. Why no IE? ___Hire me___ and 
 I will help you with desktop browsers and mobile devices
 
 It supports different resolutions i.e. the layout will tune a bit to fit your screen.
