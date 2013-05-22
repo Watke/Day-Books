@@ -6,7 +6,7 @@ This is a day book application that can keep your financial entries. It is an HT
 and currently it can run on Chrome 27, Firefox 21, Opera 12. It supports different resolutions i.e. 
 the layout will tune a bit to fit your screen.
 
-Please check it on heroku: ```http://day-books.herokuapp.com/````
+Please check it on heroku: ```http://day-books.herokuapp.com/```
 
 ## Build the app
 
