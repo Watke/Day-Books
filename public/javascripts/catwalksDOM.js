@@ -12,14 +12,14 @@ define(['jquery',
     "use strict";
     function CatwalksDOM() {
         // private members
-        var self = this; // NOTE: Capital constructor enable `validthis`
+        var self = this, // NOTE: Capital constructor enable `validthis`
+            aSelectBox = new SelectBox();
         /**
          * initialise select box function
          * @returns {this} the object that invoked the function
          */
         self.initSelectBox = function () {
-            var aSelectBox = new SelectBox();
-            aSelectBox.init();
+            aSelectBox.init().attachEvent();
             return self;
         };
         /**

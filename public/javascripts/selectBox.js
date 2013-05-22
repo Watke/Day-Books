@@ -28,36 +28,37 @@ define(['jquery',
     '../javascripts/constant.js'], function ($, CONSTANT) {
     "use strict";
     function SelectBox() {
-        var self = this;
+        var self = this,
+            toggle = '[data-toggle=bfh-selectbox]',
+            BFHSelectBox = function (element) {},
+            isAttached = false;
+        // prevent hoisting confusing
+        function getParent($this) {
+            var selector = $this.attr('data-target'),
+                $parent;
 
+            if (!selector) {
+                selector = $this.attr('href');
+                selector = selector && /#/.test(selector) && selector.replace(/.*(?=#[^\s]*$)/, ''); //strip for ie7
+            }
+
+            $parent = $(selector);
+            if ($parent.length === 0) {
+                $parent = $this.parent();
+            }
+
+            return $parent;
+        }
+        function clearMenus() {
+            getParent($(toggle))
+                .removeClass('open');
+        }
         self.init = function () {
             /* SELECTBOX CLASS DEFINITION
              * ========================= */
 
-            var toggle = '[data-toggle=bfh-selectbox]',
-                BFHSelectBox = function (element) {},
-                origHook;
-            // prevent hoisting confusing
-            function getParent($this) {
-                var selector = $this.attr('data-target'),
-                    $parent;
+            var origHook;
 
-                if (!selector) {
-                    selector = $this.attr('href');
-                    selector = selector && /#/.test(selector) && selector.replace(/.*(?=#[^\s]*$)/, ''); //strip for ie7
-                }
-
-                $parent = $(selector);
-                if ($parent.length === 0) {
-                    $parent = $this.parent();
-                }
-
-                return $parent;
-            }
-            function clearMenus() {
-                getParent($(toggle))
-                    .removeClass('open');
-            }
             BFHSelectBox.prototype = {
 
                 constructor: BFHSelectBox,
@@ -248,7 +249,8 @@ define(['jquery',
                 get: function (el) {
                     if ($(el).hasClass("bfh-selectbox")) {
                         return $(el).find('input[type="hidden"]').val();
-                    } else if (origHook) {
+                    }
+                    if (origHook) {
                         return origHook.get(el);
                     }
                 },
@@ -264,29 +266,36 @@ define(['jquery',
                     }
                 }
             };
+            return self;
+        };
 
+        self.attachEvent = function () {
+            if (isAttached) {
+                return self;
+            }
             /* APPLY TO STANDARD SELECTBOX ELEMENTS
              * =================================== */
 
-            $(function () {
-                $('html')
-                    .on('click.bfhselectbox.data-api', clearMenus);
-                $('body')
-                    .on('click.bfhselectbox.data-api touchstart.bfhselectbox.data-api',
-                        toggle, BFHSelectBox.prototype.toggle)
-                    .on('keydown.bfhselectbox.data-api',
-                        toggle + ', [role=option]', BFHSelectBox.prototype.keydown)
-                    .on('mouseenter.bfhselectbox.data-api', '[role=option] > li > a',
-                        BFHSelectBox.prototype.mouseenter)
-                    .on('click.bfhselectbox.data-api', '[role=option] > li > a',
-                        BFHSelectBox.prototype.select)
-                    .on('click.bfhselectbox.data-api', '.bfh-selectbox-filter',
-                        function (e) {
-                            return false;
-                        })
-                    .on('propertychange.bfhselectbox.data-api change.bfhselectbox.data-api input.bfhselectbox.data-api paste.bfhselectbox.data-api',
-                        '.bfh-selectbox-filter', BFHSelectBox.prototype.filter);
-            });
+            $('html')
+                .on('click.bfhselectbox.data-api', clearMenus);
+            $('body')
+                .on('click.bfhselectbox.data-api touchstart.bfhselectbox.data-api',
+                    toggle, BFHSelectBox.prototype.toggle)
+                .on('keydown.bfhselectbox.data-api',
+                    toggle + ', [role=option]', BFHSelectBox.prototype.keydown)
+                .on('mouseenter.bfhselectbox.data-api', '[role=option] > li > a',
+                    BFHSelectBox.prototype.mouseenter)
+                .on('click.bfhselectbox.data-api', '[role=option] > li > a',
+                    BFHSelectBox.prototype.select)
+                .on('click.bfhselectbox.data-api', '.bfh-selectbox-filter',
+                    function (e) {
+                        return false;
+                    })
+                .on('propertychange.bfhselectbox.data-api change.bfhselectbox.data-api input.bfhselectbox.data-api paste.bfhselectbox.data-api',
+                    '.bfh-selectbox-filter', BFHSelectBox.prototype.filter);
+
+            isAttached = !isAttached;
+            return self;
         };
     }
     return SelectBox;
