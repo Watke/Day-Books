@@ -21,24 +21,9 @@ define(["jquery",
         self.getInputData = function () {
             // prevent hoisting confusion
             var data = {};
-            function formattingDate(oldDate) {
-                if (oldDate) {
-                    //private variables
-                    var newDate = new Date(oldDate),
-                        day = newDate.getDate(),
-                        month = parseInt(newDate.getMonth()) + 1,
-                        year = newDate.getFullYear().toString().slice(2);
-                    return day + '.' + month + '.' + year;
-                }
-                // for 'use strict' reason, no `else` after `return`
-                if (!oldDate) {
-                    return '';
-                }
-                return '';
-            }
             data.type = $('#type').val();
             data.ENTRY = $('#entry').val();
-            data.DATE = formattingDate($('#entryDate').val());
+            data.DATE = $('#entryDate').val();
 
             data.ACCOUNT = $('#accountNo').val();
             data.CONTRA_ACCOUNT = $('#contraAccount').val();

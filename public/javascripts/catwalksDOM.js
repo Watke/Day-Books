@@ -40,7 +40,9 @@ define(['jquery',
         self.initDatePicker = function () {
             var aDatePicker = new DatePicker();
             aDatePicker.init();
-            $('.datepicker').datepicker();
+            $('.datepicker').datepicker({
+                format: 'dd.mm.yy'
+            });
             return self;
         };
         /**
@@ -49,7 +51,15 @@ define(['jquery',
          */
         self.addNewEntry = function () {
             // private member
-            var newEntry = new EJS({url : '/templates/newEntry.ejs'}).render();
+            var newEntry;
+            function getToday() {
+                var today = new Date(),
+                    day = today.getDate(),
+                    month = today.getMonth() + 1,
+                    year = today.getFullYear();
+                return day + '.' + month + '.' + year;
+            }
+            newEntry = new EJS({url : '/templates/newEntry.ejs'}).render({today : getToday()});
             $('#newEntryWrap').append(newEntry);
             return self;
         };

@@ -85,7 +85,7 @@ define(['jquery', '../../javascripts/newEntry.js',
                 // HOW: data retrieved from the form v.s. from getInputData() function
                 equal(type.val(), data.type);
                 equal(entry.val(), data.ENTRY);
-                equal(CONSTANT_TEST.NEW_ENTRY.TEST.DATE_FORMATTED, data.DATE);
+                equal(entryDate.val(), data.DATE);
 
                 equal(accountNo.val(), data.ACCOUNT);
                 equal(contraAccount.val(), data.CONTRA_ACCOUNT);

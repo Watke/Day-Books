@@ -175,6 +175,10 @@ thead {
     background-color : #ffffff;
     color: #000000;
 }
+.datepicker {
+    padding: 0px;
+    margin-top: 0px;
+}
 
 /* form input box length */
 input {

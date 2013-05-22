@@ -69,6 +69,9 @@ define(['jquery'], function ($) {
                         return {separator: separator, parts: parts};
                     },
                     parseDate: function (oldDate, format) {
+                        if (!oldDate) {
+                            return new Date();
+                        }
                         var parts = oldDate.split(format.separator),
                             date = new Date(),
                             year,

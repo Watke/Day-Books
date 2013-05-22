@@ -11,8 +11,7 @@ define(function () {
             TEST : {
                 type : 'Journal',
                 ENTRY : '12345',
-                DATE : '2013-6-13',
-                DATE_FORMATTED : '13.6.13',
+                DATE : '13.6.13',
 
                 ACCOUNT : '1190',
                 CONTRA_ACCOUNT : '1200',

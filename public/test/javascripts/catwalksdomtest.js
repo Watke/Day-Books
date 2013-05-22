@@ -26,10 +26,14 @@ define(['jquery',
             test('create the account sheet form', function () {
                 var aCatwalksDOM = new CatwalksDOM(),
                     accountSheetWrap = $('#accountSheetWrap'),
+                    newEntryWrap = $('#newEntryWrap'),
                     // prototype chain would not continue
                     accountSheetWrapChildrenNumber = accountSheetWrap.children().length;
                 equal(accountSheetWrapChildrenNumber, 0);
-                aCatwalksDOM.showAccountSheet();
+                // create a add-new-entry from to test showAccountSheet
+                aCatwalksDOM.addNewEntry();
+                // account sheet accepts a node which trigger it
+                aCatwalksDOM.showAccountSheet($('#selectContraAC'));
                 // 1 section and 1 dive
                 equal(accountSheetWrap.children().length, 2);
             });
@@ -40,9 +44,12 @@ define(['jquery',
                     pText,
                     footer,
                     footerLength,
-                    aCatwalksDOM = new CatwalksDOM();
+                    aCatwalksDOM = new CatwalksDOM(),
+                    newEntryWrap = $('#newEntryWrap');
+                // create a add-new-entry from to test showAccountSheet
+                aCatwalksDOM.addNewEntry();
                 // add account sheet, because it has footer
-                aCatwalksDOM.showAccountSheet();
+                aCatwalksDOM.showAccountSheet($('#selectContraAC'));
                 footer = $('#numberOfItems');
                 footerLength = footer.children().length;
                 equal(footerLength, 0);

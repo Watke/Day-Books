@@ -15,7 +15,7 @@ function ok(exp, msg) {
         throw new Error(msg);
     }
 }
-
+// RUN the test: mocha ./test/ -R spec -u qunit -t 6000
 suite('catwalks');
 test('getToday', function () {
     "use strict";
