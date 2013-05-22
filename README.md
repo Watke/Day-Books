@@ -3,8 +3,7 @@ Day-Books
 
 ## What is it?
 This is a day book application that can keep your financial entries. It is an HTML5 application, 
-and currently it can run on Chrome 27, Firefox 21, Opera 12. Why no IE? ___Hire me___ and 
-I will help you with desktop browsers and mobile devices
+and currently it can run on Chrome 27, Firefox 21, Opera 12. 
 
 It supports different resolutions i.e. the layout will tune a bit to fit your screen.
 
@@ -34,8 +33,19 @@ To run the test on Server side, please go to `cd Day-Books` then use ```mocha ./
 
 ## More Detail?
 
-I tried to put some of my resource in Clound Delivery Networks (CDN) in order to provide fast and reliable resources 
+* I tried to put some of my resource in Clound Delivery Networks (CDN) in order to provide fast and reliable resources 
 delivery. 
+* The strictest Javascript coding quality, and it is even stricter than ECMAScript specification.
+* All my JS codes can beautifully pass JSLint.
+
+## What It Hasn't Covered and Why?
+* Have not yet tested no IE
+* Have not yet FULLY passed CSS and HTML W3C validation
+* Have not yer supported tablets and phones' touch event
+* Have no input type checking and sanitising
+
+### why?
+___Hire me___ and all above will come true, and more over them.
 
 ## Why Server?
 
