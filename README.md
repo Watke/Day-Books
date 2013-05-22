@@ -41,7 +41,9 @@ delivery.
 ## What It Hasn't Covered and Why?
 * Have not yet tested no IE
 * Have not yet FULLY passed CSS and HTML W3C validation
-* Have not yer supported tablets and phones' touch event
+* Have not yet supported tablets and phones' touch event
+* Have not yet covered sanitise
+* Have not yet cleaned fully date picker, third party code, compatiblity problem
 * Have no input type checking and sanitising
 
 ### why?
